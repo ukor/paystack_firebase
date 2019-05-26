@@ -7,7 +7,7 @@ I expose three (3) functions (route):
 - https://us-central1-function-example.cloudfunctions.net/helloWorld
   ## Paystack Route
   This is the one you submit to paystack
-  It only handles POST method see the functions/index.js file
+  It only handles POST method see the `functions/index.js` file
 - https://us-central1-function-example.cloudfunctions.net/payStackHook
   ## Test route
   This is just to demostrate that you can create multiple functions (routes)
