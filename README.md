@@ -1,0 +1,1 @@
+## Illustrates how to use firebase functions to recieve paystack webhook
