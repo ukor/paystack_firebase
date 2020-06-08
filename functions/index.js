@@ -1,6 +1,7 @@
+const crypto = require('crypto');
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
-const crypto = require('crypto');
+admin.initializeApp();
 
 /**
  * see documentation for paystack webhook here - https://developers.paystack.co/docs/events
