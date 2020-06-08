@@ -64,3 +64,5 @@ node_modules/
 
 # dotenv environment variables file
 .env
+# google service account credentials
+test-cloud-258123-8b535e4067bd.json
