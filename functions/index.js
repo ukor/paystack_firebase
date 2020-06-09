@@ -6,7 +6,7 @@ admin.initializeApp();
 /**
  * see documentation for paystack webhook here - https://developers.paystack.co/docs/events
  */
-exports.payStackHook = functions.https.onRequest((request, response) => {
+exports.payStackHook = functions.https.onRequest(async (request, response) => {
 
 	const { method, headers, body } = request;
 
@@ -14,7 +14,7 @@ exports.payStackHook = functions.https.onRequest((request, response) => {
 	 * Restric this function to POST request Only
 	 * Respond with status code 500 for all GET request
 	 */
-	if (method !== 'POST') response.status(500).end();
+	if (method !== 'POST') response.sendStatus(500).end();
 
 	/**
 	 * Make sure request is comming from paystack
@@ -31,7 +31,7 @@ exports.payStackHook = functions.https.onRequest((request, response) => {
 	let hash = crypto.createHmac('sha512', secret).update(JSON.stringify(body)).digest('hex');
 
 	//  Return status 500 if signature does not match
-	if (hash !== headers['X-Paystack-Signature']) response.status(500).send('Invalid Signature');
+	if (hash !== headers['X-Paystack-Signature']) response.sendStatus(500).send('Invalid Signature');
 
 	/**
 	 * Responde to event here
@@ -70,6 +70,6 @@ exports.payStackHook = functions.https.onRequest((request, response) => {
 	 * @see  https://developers.paystack.co/docs/events#section-responding-to-an-event
 	 * to see how paystack handle response
 	 */
-	response.status(200);
+	response.sendStatus(200);
 
 });
